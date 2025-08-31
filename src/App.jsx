@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
+import "./App.css"; // Import external CSS
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -25,8 +26,8 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}>
-      <h1>My To-Do List</h1>
+    <div className="app-container">
+      <h1 className="title">My To-Do List</h1>
       <TodoInput addTask={addTask} />
       <TodoList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
     </div>
