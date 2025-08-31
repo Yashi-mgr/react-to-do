@@ -1,35 +1,60 @@
 import React, { useState } from "react";
-import TodoInput from "./TodoInput";
-import TodoList from "./TodoList";
-import "./App.css"; // Import external CSS
+import "./App.css";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState("");
+  const [day, setDay] = useState("Sunday");
+  const [tasks, setTasks] = useState({
+    Sunday: [],
+    Monday: [],
+    Tuesday: [],
+    Wednesday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: [],
+  });
 
-  // Add a new task
-  const addTask = (task) => {
-    setTasks([...tasks, { id: Date.now(), text: task, completed: false }]);
-  };
-
-  // Delete a task
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((t) => t.id !== id));
-  };
-
-  // Toggle complete/incomplete
-  const toggleTask = (id) => {
-    setTasks(
-      tasks.map((t) =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      )
-    );
+  const handleAddTask = () => {
+    if (task.trim() === "") return;
+    setTasks((prev) => ({
+      ...prev,
+      [day]: [...prev[day], task],
+    }));
+    setTask("");
   };
 
   return (
-    <div className="app-container">
-      <h1 className="title">My To-Do List</h1>
-      <TodoInput addTask={addTask} />
-      <TodoList tasks={tasks} deleteTask={deleteTask} toggleTask={toggleTask} />
+    <div className="app">
+      <h1 className="title">Weekly Task Planner</h1>
+
+      <div className="input-section">
+        <input
+          type="text"
+          placeholder="Enter a task..."
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          className="task-input"
+        />
+        <select value={day} onChange={(e) => setDay(e.target.value)} className="day-select">
+          {Object.keys(tasks).map((day) => (
+            <option key={day} value={day}>{day}</option>
+          ))}
+        </select>
+        <button onClick={handleAddTask} className="add-btn">Add</button>
+      </div>
+
+      <div className="week-grid">
+        {Object.entries(tasks).map(([day, dayTasks]) => (
+          <div key={day} className="day-column">
+            <h2>{day}</h2>
+            <ul>
+              {dayTasks.map((t, i) => (
+                <li key={i} className="task">{t}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

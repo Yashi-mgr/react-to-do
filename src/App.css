@@ -1,15 +1,84 @@
-.app-container {
-  max-width: 400px;
-  margin: 50px auto;
+/* General app container */
+.app {
   text-align: center;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  min-height: 100vh;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Title */
 .title {
-  font-size: 28px;
-  color: #333;
+  font-size: 2rem;
   margin-bottom: 20px;
+  color: #222;
+}
+
+/* Input section */
+.input-section {
+  margin-bottom: 25px;
+}
+
+.task-input {
+  padding: 8px;
+  font-size: 1rem;
+  width: 220px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.day-select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.add-btn {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Week grid */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Day column */
+.day-column {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 150px;
+}
+
+.day-column h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #0077cc;
+}
+
+/* Task list */
+.task {
+  background-color: #333;
+  color: white;
+  padding: 6px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-align: left;
 }
