@@ -2,18 +2,10 @@ import React from "react";
 
 function TodoItem({ task, deleteTask, toggleTask }) {
   return (
-    <li style={{ 
-      display: "flex", 
-      justifyContent: "space-between", 
-      marginBottom: "10px", 
-      textDecoration: task.completed ? "line-through" : "none" 
-    }}>
-      <span>{task.text}</span>
-      <div>
-        <button onClick={() => toggleTask(task.id)} style={{ marginRight: "5px" }}>✔</button>
-        <button onClick={() => deleteTask(task.id)}>❌</button>
-      </div>
-    </li>
+    <div className={`todo-item ${task.completed ? "completed" : ""}`}>
+      <span onClick={() => toggleTask(task.id)}>{task.text}</span>
+      <button onClick={() => deleteTask(task.id)}>Delete</button>
+    </div>
   );
 }
 

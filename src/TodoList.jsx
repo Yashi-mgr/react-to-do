@@ -3,8 +3,8 @@ import TodoItem from "./TodoItem";
 
 function TodoList({ tasks, deleteTask, toggleTask }) {
   return (
-    <ul style={{ listStyle: "none", padding: 0, marginTop: "20px" }}>
-      {tasks.map((task) => (
+    <div>
+       {tasks.map((task) => (
         <TodoItem
           key={task.id}
           task={task}
@@ -12,7 +12,7 @@ function TodoList({ tasks, deleteTask, toggleTask }) {
           toggleTask={toggleTask}
         />
       ))}
-    </ul>
+    </div>
   );
 }
 
